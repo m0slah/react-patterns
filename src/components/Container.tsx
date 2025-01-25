@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+// Components
+import Posts from "./Posts";
+
 interface IPost {
   userId: number;
   id: number;
@@ -35,13 +38,7 @@ export default function Container() {
   return isLoading ? (
     <span>Loading... </span>
   ) : data ? (
-    <ul>
-      {data.map((post: IPost) => (
-        <li key={`item-${post.id}`}>
-          <span>{post.title}</span>
-        </li>
-      ))}
-    </ul>
+    <Posts data={data} />
   ) : (
     <span>{JSON.stringify(error)}</span>
   );
